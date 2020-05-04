@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace wpf_demo_phonebook
 {
@@ -13,6 +10,7 @@ namespace wpf_demo_phonebook
         public PhonebookDAO()
         {
             conn = new DbConnection();
+
         }
 
         /// <summary>
@@ -54,6 +52,53 @@ namespace wpf_demo_phonebook
             parameters[0].Value = _id;
 
             return conn.ExecuteSelectQuery(_query, parameters);
+        }
+
+        public DataTable GetAllContact()
+        {
+
+            string _querry =
+                $"SELECT * FROM [Contacts]";
+
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters = null;
+
+            return conn.ExecuteSelectQuery(_querry, parameters);
+        }
+
+        public void DeleteContact(int _id)
+        {
+
+
+            string _querry =
+                $"DELETE FROM [Contacts] WHERE ContactID = @_id";
+
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@_id", SqlDbType.Int);
+            parameters[0].Value = _id;
+
+            conn.ExecuteSelectQuery(_querry, parameters);
+
+        }
+
+        public void UpdateContact(string _FirstName, string _LastName, string _Email, string _Phone, string _Mobile, int _ContactID)
+        {
+
+            string _querry = $"UPDATE Contacts " +
+                            $"SET FirstName = '{_FirstName}', " +
+                            $"LastName = '{_LastName}'," +
+                            $"Email = '{_Email}'," +
+                            $"Phone = '{_Phone}'," +
+                            $"Mobile = '{_Mobile}'" +
+                            $"WHERE ContactID = @_id";
+
+
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@_id", SqlDbType.Int);
+            parameters[0].Value = _ContactID;
+
+
+            conn.ExecutUpdateQuery(_querry, parameters);
         }
     }
 }

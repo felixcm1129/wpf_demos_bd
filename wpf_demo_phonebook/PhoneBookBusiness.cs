@@ -28,6 +28,51 @@ namespace wpf_demo_phonebook
             return cm;
         }
 
+        public static IEnumerable<ContactModel> GetAll()
+        {
+            ContactModel cm = null;
+
+            DataTable dt = new DataTable();
+
+            List<ContactModel> contactsList = new List<ContactModel> { };
+
+            dt = dao.GetAllContact();
+
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    cm = RowToContactModel(row);
+               
+                    contactsList.Add(cm);
+                }
+
+
+            }
+
+            foreach (ContactModel c in contactsList)
+            {
+
+                yield return c;
+            }
+
+
+        }
+
+        public static void UpdateContact(ContactModel contact)
+        {
+
+            dao.UpdateContact(contact.FirstName, contact.LastName, contact.Email, contact.Phone, contact.Mobile, contact.ContactID);
+        }
+
+        public static void DeleteContact(int _id)
+        {
+            dao.DeleteContact(_id);
+
+
+
+        }
+
         public static ContactModel GetContactByID(int _id)
         {
             ContactModel cm = null;
@@ -60,5 +105,7 @@ namespace wpf_demo_phonebook
 
             return cm;
         }
+
+
     }
 }
