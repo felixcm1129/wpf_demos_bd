@@ -22,7 +22,7 @@ namespace demo_northwind
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                using (SqlCommand sqlCommand = new SqlCommand("Select * from Customers", conn))
+                using (SqlCommand sqlCommand = new SqlCommand("Select * from Contacts", conn))
                 {
                     try
                     {

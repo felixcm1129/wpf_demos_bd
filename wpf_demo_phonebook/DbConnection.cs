@@ -53,15 +53,18 @@ namespace wpf_demo_phonebook
             {
                 command.Connection = open();
                 command.CommandText = _query;
-                command.Parameters.AddRange(parameters);
+
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
                 DataAdapter.SelectCommand = command;
                 DataAdapter.Fill(ds);
                 dataTable = ds.Tables[0];
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                writeError($"Requête : {_query} \nSqlException : {ex.StackTrace.ToString()}");    
+                writeError($"Requête : {_query} \nSqlException : {ex.StackTrace.ToString()}");
             }
             finally
             {

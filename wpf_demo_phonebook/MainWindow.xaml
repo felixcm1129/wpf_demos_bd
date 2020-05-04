@@ -8,7 +8,6 @@
         Title="Contact Model" MinHeight="300" Width="800">
     <DockPanel>
 
-
         <ToolBar DockPanel.Dock="Top">
             <Button Content="+Contact" Command="{Binding NewContactCommand}"
                         CommandParameter=""/>
@@ -21,67 +20,84 @@
         </ToolBar>
 
 
+
         <Grid>
 
-
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="19*"/>
-                <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" MinHeight="29.96"/>
-                <RowDefinition Height="Auto" MinHeight="29.96"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
 
-            <StackPanel  Grid.Column="0" Grid.RowSpan="9" Margin="6,6,6,6" Orientation="Horizontal" x:Name="spHeader">
-                <TextBlock Text="Liste des contacts" />
-            </StackPanel>
-            <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}"
-                                                       ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
-                                                       Margin="6,6,6,6"
-                                                       IsSynchronizedWithCurrentItem="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Info}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Margin="6" Orientation="Horizontal" x:Name="spHeader">
+                    <TextBlock Text="Liste des contacts" />
+                </StackPanel>
+                
+                <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Info}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </Grid>
 
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="Prénom : " Margin="6,6,6,6" TextAlignment="Right"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="Nom de famille : " Margin="6,6,6,6" TextAlignment="Right"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="Email : " Margin="6,6,6,6" TextAlignment="Right"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="Téléphone : " Margin="6,6,6,6" TextAlignment="Right"/>
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="Celluaire : " Margin="6,6,6,6" TextAlignment="Right"/>
-            <TextBlock Grid.Row="7" Grid.Column="1" Text="Identifiant : " Margin="6,6,6,6" TextAlignment="Right"/>
+            <Grid Grid.Column="1" Margin="6">
 
 
-            <TextBox Grid.Row="1" Grid.Column="2" x:Name="txtFirstName"  Text="{Binding SelectedContact.FirstName}" Margin="6,6,6,6"/>
-            <TextBox Grid.Row="2" Grid.Column="2" x:Name="txtLastName"  Text="{Binding SelectedContact.LastName}" Margin="6,6,6,6"/>
-            <TextBox Grid.Row="3" Grid.Column="2" x:Name="txtEmail"  Text="{Binding SelectedContact.Email}" Margin="6,6,6,6"/>
-            <TextBox Grid.Row="4" Grid.Column="2" x:Name="txtPhone"  Text="{Binding SelectedContact.Phone}" Margin="6,6,6,6"/>
-            <TextBox Grid.Row="5" Grid.Column="2" x:Name="txtMobile"  Text="{Binding SelectedContact.Mobile}" Margin="6,6,6,6"/>
-            <TextBox Grid.Row="7" Grid.Column="2" x:Name="txtID" Text="{Binding SelectedContact.ContactID}" Margin="6,6,6,6"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*"/>
+                    <ColumnDefinition Width="582*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="29.96"/>
+                    <RowDefinition Height="Auto" MinHeight="29.96"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Center" Margin="0,5,0,5" Width="274">
-                <Button Content="Enregistrer" Margin="6" Command="{Binding UpdateContactCommand}" 
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,349,0" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Prénom : " Margin="6,6,6,6" TextAlignment="Right"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Nom de famille : " Margin="6,6,6,6" TextAlignment="Right"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Email : " Margin="6,6,6,6" TextAlignment="Right"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Téléphone : " Margin="6,6,6,6" TextAlignment="Right"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Celluaire : " Margin="6,6,6,6" TextAlignment="Right"/>
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Identifiant : " Margin="6,6,6,6" TextAlignment="Right"/>
+
+
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtFirstName"  Text="{Binding SelectedContact.FirstName}" Margin="6,6,6,6"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtLastName"  Text="{Binding SelectedContact.LastName}" Margin="6,6,6,6"/>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtEmail"  Text="{Binding SelectedContact.Email}" Margin="6,6,6,6"/>
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtPhone"  Text="{Binding SelectedContact.Phone}" Margin="6,6,6,6"/>
+                <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtMobile"  Text="{Binding SelectedContact.Mobile}" Margin="6,6,6,6"/>
+                <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtID" Text="{Binding SelectedContact.ContactID}" Margin="6,6,6,6"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Margin="69,5,0,5" Width="274">
+                    <Button Content="Enregistrer" Margin="6" Command="{Binding UpdateContactCommand}" 
                         CommandParameter="{Binding ElementName=txtCriteria,Path=Text}"
                         Width="125">
-                </Button>
-                <Button Content="Supprimer" Margin="6" Command="{Binding DeleteContactCommand}"
+                    </Button>
+                    <Button Content="Supprimer" Margin="6" Command="{Binding DeleteContactCommand}"
                         CommandParameter="{Binding ElementName=txtID,Path=Text}"
                         Width="125"/>
 
-            </StackPanel>
+                </StackPanel>
+            </Grid>
+
+
         </Grid>
-
-
     </DockPanel>
+    
 </Window>
