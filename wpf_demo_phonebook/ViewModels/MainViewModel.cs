@@ -120,7 +120,7 @@ namespace wpf_demo_phonebook.ViewModels
         {
             string input = c as string;
 
-            if (MessageBox.Show("Supprimer le Contact?:  " + input, "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Supprimer le Contact dont le ContactID est : " + input + "?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 int output;
                 Int32.TryParse(input, out output);
