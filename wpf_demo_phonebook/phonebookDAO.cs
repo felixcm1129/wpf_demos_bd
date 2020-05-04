@@ -100,5 +100,15 @@ namespace wpf_demo_phonebook
 
             conn.ExecutUpdateQuery(_querry, parameters);
         }
+
+        public void AddContact(string _FirstName, string _LastName, string _Email, string _Phone, string _Mobile, int _ContactID)
+        {
+            string _query = $"INSERT INTO [Contacts]" +
+                           $" (FirstName, LastName, Email, Phone, Mobile) " +
+                           $"OUTPUT INSERTED.ContactID " +
+                           $"VALUES ('{_FirstName}','{_LastName}','{_Email}','{_Phone}','{_Mobile}')";
+
+            conn.ExecutInsertQuery(_query, null);
+        }
     }
 }

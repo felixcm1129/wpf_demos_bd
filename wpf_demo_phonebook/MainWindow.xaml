@@ -8,6 +8,28 @@
         Title="Contact Model" MinHeight="300" Width="800">
     <DockPanel>
 
+        <StackPanel DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="_Fichier">
+                    <MenuItem Header="_Ouvrir..."/>
+                    <MenuItem Header="_Sauvegarder"/>
+                    <MenuItem Header="_Fermer"/>
+                    <Separator/>
+                    <MenuItem Header="_Nouveau client"/>
+                    <Separator/>
+                    <MenuItem Header="_Quitter"/>
+                </MenuItem>
+                <MenuItem Header="_Édition">
+                    <MenuItem Header="Couper..."/>
+                    <MenuItem Header="Copier"/>
+                    <MenuItem Header="Coller"/>
+                </MenuItem>
+                <MenuItem Header="Enregistrement">
+                    <MenuItem Header="Nouveau Contact" Command="{Binding NewContactCommand}"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
         <ToolBar DockPanel.Dock="Top">
             <Button Content="+Contact" Command="{Binding NewContactCommand}"
                         CommandParameter=""/>

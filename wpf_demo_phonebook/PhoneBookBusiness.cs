@@ -69,8 +69,6 @@ namespace wpf_demo_phonebook
         {
             dao.DeleteContact(_id);
 
-
-
         }
 
         public static ContactModel GetContactByID(int _id)
@@ -106,6 +104,10 @@ namespace wpf_demo_phonebook
             return cm;
         }
 
+        public static void NewContact(ContactModel c)
+        {
+            dao.AddContact(c.FirstName, c.LastName, c.Email, c.Phone, c.Mobile, c.ContactID);
+        }
 
     }
 }
